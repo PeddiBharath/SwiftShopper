@@ -104,7 +104,7 @@ def generate_unique_order_id():
 def update_order(item_name,quantity):
     customer_id = st.session_state['id']
     order_id = generate_unique_order_id()  # Generate unique order ID
-    current_date = datetime.now(timezone.utc).isoformat()
+    current_date = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0).isoformat()
     status = "Placed"
 
     order_response = supabase.table("orders").insert({
